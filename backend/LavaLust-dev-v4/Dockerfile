@@ -1,26 +1,25 @@
-# Official PHP + Apache base image
 FROM php:8.2-apache
 
-# Enable .htaccess (super important para sa LavaLust routing)
+# Enable rewrite for .htaccess
 RUN a2enmod rewrite
 
-# Install PDO MySQL driver (para makaconnect sa sql12freedatabase.com)
+# Install MySQL driver
 RUN docker-php-ext-install pdo_mysql
 
-# Set document root to public folder (LavaLust expects this)
-ENV APACHE_DOCUMENT_ROOT /var/www/html/public
+# Change Apache document root to public folder
+ENV APACHE_DOCUMENT_ROOT /var/www/html/LavaLust-dev-v4/public
 RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
 RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
 
 # Working directory
 WORKDIR /var/www/html
 
-# Copy only the backend code
-COPY backend/LavaLust-dev-v4 /var/www/html
+# Copy the entire repo, then use only the LavaLust folder
+COPY . /var/www/html
 
 # Install Composer + dependencies
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
-    && composer install --no-dev --optimize-autoloader --no-interaction
+    && composer install --no-dev --optimize-autoloader --no-interaction --working-dir=LavaLust-dev-v4
 
-# Apache runs in foreground (required by Render)
+# Start Apache
 CMD ["apache2-foreground"]
