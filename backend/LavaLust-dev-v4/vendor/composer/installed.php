@@ -3,7 +3,7 @@
         'name' => 'johnrheytamares/lava-lust-dev-v4',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '94a0e7c0c0f79226f4d2f6781002abaaa6c2bcd3',
+        'reference' => 'c91e1e5dcca9d0ce5d972eafe88f96d2af9218ba',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -76,7 +76,7 @@
         'johnrheytamares/lava-lust-dev-v4' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '94a0e7c0c0f79226f4d2f6781002abaaa6c2bcd3',
+            'reference' => 'c91e1e5dcca9d0ce5d972eafe88f96d2af9218ba',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

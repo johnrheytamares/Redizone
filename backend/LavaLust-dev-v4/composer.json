@@ -8,6 +8,7 @@
     "require": {
         "phpmailer/phpmailer": "^7.0",
         "firebase/php-jwt": "5.5",
-        "google/apiclient": "^2.14"
+        "google/apiclient": "^2.14",
+        "php": "^8.0."
     }
 }
